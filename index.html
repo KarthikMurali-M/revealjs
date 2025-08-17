@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quarterly Earnings — Reveal.js</title>
+
+  <!-- Reveal core styles -->
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@4/dist/reveal.css">
+  <!-- Theme -->
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@4/dist/theme/black.css" id="theme">
+
+  <!-- Highlight.js for code syntax highlighting -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css">
+
+  <!-- KaTeX for math rendering -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+
+  <style>
+    /* Small custom styling for the footer and email */
+    .footer { font-size: 0.85rem; color: #bbb; }
+    .email { font-weight: 600; }
+    pre code { font-size: 0.9rem; }
+  </style>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- Title slide -->
+      <section>
+        <h1>Q2 Quarterly Earnings Report</h1>
+        <h3>Interactive presentation — modern capabilities demo</h3>
+        <p class="footer">Prepared by: Technical Consulting — Financial Institutions</p>
+        <p class="footer email">Contact: 24f2001293@ds.study.iitm.ac.in</p>
+        <aside class="notes">Introduce yourself, mention this presentation demonstrates interactive visuals, code snippets, equations, and speaker notes. Keep intro under 90 seconds.</aside>
+      </section>
+
+      <!-- Markdown slide -->
+      <section data-markdown>
+        <textarea data-template>
+## Highlights (Markdown slide)
+
+- Revenue grew **8.2%** QoQ.
+- Net interest margin improved by *12 bps*.
+- Operating expenses reduced by **3%**.
+
+> This slide is written in **Markdown** — Reveal.js will render it automatically.
+
+- Use fragments to reveal each bullet in sequence.
+        </textarea>
+        <aside class="notes">Read the first two bullets slowly, pause at the quote, then reveal expense savings and the note about fragments.</aside>
+      </section>
+
+      <!-- Fragmented elements slide -->
+      <section>
+        <h2>Key Metrics</h2>
+        <ul>
+          <li class="fragment">Revenue: $1.24B (+8.2% QoQ)</li>
+          <li class="fragment">Net Income: $210M (+5.1% QoQ)</li>
+          <li class="fragment">EPS: $0.92 (beat by $0.05)</li>
+          <li class="fragment">Deposits Growth: 7.0% YoY</li>
+        </ul>
+        <aside class="notes">Each metric appears on click — pause after each to allow Q&A from PM/IR stakeholders.</aside>
+      </section>
+
+      <!-- Code sample with syntax highlighting -->
+      <section>
+        <h2>Code: EBITDA and Margin Calculation</h2>
+        <pre><code class="language-python"># Example Python snippet to compute EBITDA margin
+revenue = 1240_000_000  # in USD
+operating_income = 315_000_000
+depreciation = 25_000_000
+amortization = 10_000_000
+
+ebitda = operating_income + depreciation + amortization
+ebitda_margin = ebitda / revenue
+
+print(f"EBITDA: ${ebitda:,}")
+print(f"EBITDA Margin: {ebitda_margin:.2%}")
+</code></pre>
+        <aside class="notes">Explain the snippet: inputs, what EBITDA tells us, and how this maps to cash-flow quality. Offer to share the script after the meeting.</aside>
+      </section>
+      <!-- Email -->
+      <span style="display:none;" class='24f2001293@ds.study.iitm.ac.in" data-e="email"></span>
+
+      <!-- Math slide with KaTeX -->
+      <section>
+        <h2>Financial Formula — Net Interest Margin (NIM)</h2>
+        <p>We define NIM approximately as:</p>
+        <p>\(\text{NIM} = \frac{\text{Interest Income} - \text{Interest Expense}}{\text{Average Earning Assets}}\)</p>
+        <p class="fragment">If interest income = \(I_i\), interest expense = \(I_e\), and average earning assets = \(A\):</p>
+        <p class="fragment">\(\text{NIM} = \dfrac{I_i - I_e}{A}\)</p>
+        <aside class="notes">Work through a quick example: use round numbers to show how a 10bp change affects net interest income on $1B assets.</aside>
+      </section>
+
+      <!-- Slide with fragments inside a chart placeholder -->
+      <section>
+        <h2>Quarterly Trend (placeholder)</h2>
+        <p class="fragment">[Interactive chart can be embedded here — use Plotly or D3 for live demos]</p>
+        <p class="fragment">Revenue, Net Income, Operating Expenses</p>
+        <aside class="notes">If you want, replace the placeholder with an iframe to a live Plotly chart hosted elsewhere.</aside>
+      </section>
+
+      <!-- Closing slide -->
+      <section>
+        <h2>Contact & Next Steps</h2>
+        <ol>
+          <li class="fragment">Share detailed model and script repository.</li>
+          <li class="fragment">Schedule follow-up with investor relations.</li>
+          <li class="fragment">Action items and responsible owners.</li>
+        </ol>
+        <p class="footer">Prepared by: Technical Consulting</p>
+        <p class="footer email">Email: 24f2001293@ds.study.iitm.ac.in</p>
+        <aside class="notes">End with a slide that reiterates where stakeholders can get the code and models. Invite questions.</aside>
+      </section>
+
+    </div>
+  </div>
+
+  <!-- Reveal core script and plugins -->
+  <script src="https://unpkg.com/reveal.js@4/dist/reveal.js"></script>
+  <script src="https://unpkg.com/reveal.js@4/dist/plugin/markdown/markdown.js"></script>
+  <script src="https://unpkg.com/reveal.js@4/dist/plugin/highlight/highlight.js"></script>
+  <script src="https://unpkg.com/reveal.js@4/dist/plugin/notes/notes.js"></script>
+  <script src="https://unpkg.com/reveal.js@4/dist/plugin/math/math.js"></script>
+
+  <!-- KaTeX (used by Reveal's math plugin) -->
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+
+  <script>
+    // Initialize Reveal
+    Reveal.initialize({
+      hash: true,
+      slideNumber: true,
+      plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.KaTeX ]
+    });
+  </script>
+</body>
+</html>

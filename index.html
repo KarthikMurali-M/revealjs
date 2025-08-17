@@ -1,26 +1,22 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Quarterly Earnings — Reveal.js</title>
+  <title>Quarterly Earnings — Interactive RevealJS</title>
 
-  <!-- Reveal core styles -->
-  <link rel="stylesheet" href="https://unpkg.com/reveal.js@4/dist/reveal.css">
-  <!-- Theme -->
-  <link rel="stylesheet" href="https://unpkg.com/reveal.js@4/dist/theme/black.css" id="theme">
+  <!-- Reveal core CSS (CDN) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/theme/white.css" id="theme">
 
-  <!-- Highlight.js for code syntax highlighting -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css">
-
-  <!-- KaTeX for math rendering -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+  <!-- Highlight.js styles for code highlighting -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.8.0/styles/github.css">
 
   <style>
-    /* Small custom styling for the footer and email */
-    .footer { font-size: 0.85rem; color: #bbb; }
-    .email { font-weight: 600; }
-    pre code { font-size: 0.9rem; }
+    /* Custom styling */
+    .reveal { font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; }
+    .email-foot { position: fixed; right: 12px; bottom: 12px; font-size: 0.9rem; opacity: 0.85; }
+    .chart { height: 380px; width: 100%; }
   </style>
 </head>
 <body>
@@ -29,113 +25,143 @@
 
       <!-- Title slide -->
       <section>
-        <h1>Q2 Quarterly Earnings Report</h1>
-        <h3>Interactive presentation — modern capabilities demo</h3>
-        <p class="footer">Prepared by: Technical Consulting — Financial Institutions</p>
-        <p class="footer email">Contact: 24f2001293@ds.study.iitm.ac.in</p>
-        <aside class="notes">Introduce yourself, mention this presentation demonstrates interactive visuals, code snippets, equations, and speaker notes. Keep intro under 90 seconds.</aside>
+        <h1>Quarterly Earnings — Q2 Report</h1>
+        <h3>Interactive summary for stakeholders</h3>
+        <p class="fragment">Prepared by: Finance Analytics Team</p>
+        <aside class="notes">Start with a one-line summary of the quarter. Mention the headline metric (revenue, growth, or margin).</aside>
       </section>
 
-      <!-- Markdown slide -->
+      <!-- Markdown slide (uses RevealMarkdown plugin) -->
       <section data-markdown>
         <textarea data-template>
-## Highlights (Markdown slide)
+## Executive Summary (Markdown slide)
 
-- Revenue grew **8.2%** QoQ.
-- Net interest margin improved by *12 bps*.
-- Operating expenses reduced by **3%**.
+- Revenue: **₹X crore** (YoY +Y%)
+- Net Margin: **Z%**
+- Key drivers:
+  - Fragmented growth across Product A and B
+  - Improved collection efficiency
 
-> This slide is written in **Markdown** — Reveal.js will render it automatically.
+---
 
-- Use fragments to reveal each bullet in sequence.
+## Actions
+1. Reprice B2B contracts (short term)
+2. Reduce promotional spend on low-ROI channels
+
+`Note:` This slide is written in Markdown and will render inside RevealJS.
         </textarea>
-        <aside class="notes">Read the first two bullets slowly, pause at the quote, then reveal expense savings and the note about fragments.</aside>
       </section>
 
-      <!-- Fragmented elements slide -->
+      <!-- Animated fragments -->
       <section>
-        <h2>Key Metrics</h2>
+        <h2>Highlights (animated)</h2>
         <ul>
-          <li class="fragment">Revenue: $1.24B (+8.2% QoQ)</li>
-          <li class="fragment">Net Income: $210M (+5.1% QoQ)</li>
-          <li class="fragment">EPS: $0.92 (beat by $0.05)</li>
-          <li class="fragment">Deposits Growth: 7.0% YoY</li>
+          <li class="fragment">Topline growth exceeded target</li>
+          <li class="fragment">Operating expenses were reduced month-over-month</li>
+          <li class="fragment fade-up">Cash conversion cycle improved by 12 days</li>
         </ul>
-        <aside class="notes">Each metric appears on click — pause after each to allow Q&A from PM/IR stakeholders.</aside>
+        <aside class="notes">Call out the most important highlight first. Use fragments to reveal points and keep audience focus.</aside>
       </section>
 
       <!-- Code sample with syntax highlighting -->
       <section>
-        <h2>Code: EBITDA and Margin Calculation</h2>
-        <pre><code class="language-python"># Example Python snippet to compute EBITDA margin
-revenue = 1240_000_000  # in USD
-operating_income = 315_000_000
-depreciation = 25_000_000
-amortization = 10_000_000
+        <h2>Analysis script (Python)</h2>
+        <pre><code class="python" data-line-numbers="1-3|5">import pandas as pd
 
-ebitda = operating_income + depreciation + amortization
-ebitda_margin = ebitda / revenue
+# Load quarterly P&L
+df = pd.read_csv('data/q2_pnl.csv')
 
-print(f"EBITDA: ${ebitda:,}")
-print(f"EBITDA Margin: {ebitda_margin:.2%}")
-</code></pre>
-        <aside class="notes">Explain the snippet: inputs, what EBITDA tells us, and how this maps to cash-flow quality. Offer to share the script after the meeting.</aside>
-      </section>
-      <!-- Email -->
-
-
-      <!-- Math slide with KaTeX -->
-      <section>
-        <h2>Financial Formula — Net Interest Margin (NIM)</h2>
-        <p>We define NIM approximately as:</p>
-        <p>\(\text{NIM} = \frac{\text{Interest Income} - \text{Interest Expense}}{\text{Average Earning Assets}}\)</p>
-        <p class="fragment">If interest income = \(I_i\), interest expense = \(I_e\), and average earning assets = \(A\):</p>
-        <p class="fragment">\(\text{NIM} = \dfrac{I_i - I_e}{A}\)</p>
-        <aside class="notes">Work through a quick example: use round numbers to show how a 10bp change affects net interest income on $1B assets.</aside>
+# Compute margin
+df['margin'] = df['net_profit'] / df['revenue']
+print(df[['business_unit','revenue','margin']].groupby('business_unit').mean())
+        </code></pre>
+        <aside class="notes">Explain where the data lives and what each line computes. Mention data quality checks before running.</aside>
       </section>
 
-      <!-- Slide with fragments inside a chart placeholder -->
+      <!-- Math / formula slide -->
       <section>
-        <h2>Quarterly Trend (placeholder)</h2>
-        <p class="fragment">[Interactive chart can be embedded here — use Plotly or D3 for live demos]</p>
-        <p class="fragment">Revenue, Net Income, Operating Expenses</p>
-        <aside class="notes">If you want, replace the placeholder with an iframe to a live Plotly chart hosted elsewhere.</aside>
+        <h2>Financial Formula</h2>
+        <p>We use the standard ROIC formula:</p>
+        <p>\[\mathrm{ROIC} = \frac{\mathrm{Net\ Operating\ Profit\ After\ Tax\ (NOPAT)}}{\mathrm{Invested\ Capital}}\times 100\%\]</p>
+        <aside class="notes">Show how drivers (NOPAT and invested capital) changed this quarter. Keep this slide simple.</aside>
       </section>
 
-      <!-- Closing slide -->
+      <!-- Live demo iframe / placeholder for chart (lazy-loaded) -->
+      <section id="chart-slide">
+        <h2>Revenue Trend (interactive)</h2>
+        <div id="chart" class="chart fragment"></div>
+        <aside class="notes">If possible, demo interactive filtering by product or region here. If network-restricted, show a static image fallback.</aside>
+      </section>
+
+      <!-- Speaker notes + contact -->
       <section>
-        <h2>Contact & Next Steps</h2>
-        <ol>
-          <li class="fragment">Share detailed model and script repository.</li>
-          <li class="fragment">Schedule follow-up with investor relations.</li>
-          <li class="fragment">Action items and responsible owners.</li>
-        </ol>
-        <p class="footer">Prepared by: Technical Consulting</p>
-        <p class="footer email">Email: 24f2001293@ds.study.iitm.ac.in</p>
-        <aside class="notes">End with a slide that reiterates where stakeholders can get the code and models. Invite questions.</aside>
+        <h2>Questions & Next steps</h2>
+        <ul>
+          <li class="fragment">Deep-dive sessions with Product teams</li>
+          <li class="fragment">Reforecast FY guidance if macro worsens</li>
+        </ul>
+        <aside class="notes">Finish with calls to action. Invite stakeholders to follow-up workshops.</aside>
+      </section>
+
+      <!-- Footer with email (visible) -->
+      <section>
+        <h3>Contact</h3>
+        <p>If you need the underlying models or data exports, contact: <strong><span id="24f2001293@ds.study.iitm.ac.in">24f2001293@ds.study.iitm.ac.in</span></strong></p>
+        <aside class="notes">Provide contact details and where to find the slide repo.</aside>
       </section>
 
     </div>
   </div>
 
-  <!-- Reveal core script and plugins -->
-  <script src="https://unpkg.com/reveal.js@4/dist/reveal.js"></script>
-  <script src="https://unpkg.com/reveal.js@4/dist/plugin/markdown/markdown.js"></script>
-  <script src="https://unpkg.com/reveal.js@4/dist/plugin/highlight/highlight.js"></script>
-  <script src="https://unpkg.com/reveal.js@4/dist/plugin/notes/notes.js"></script>
-  <script src="https://unpkg.com/reveal.js@4/dist/plugin/math/math.js"></script>
+  <!-- Email foot note (always visible in presenter view) -->
+  <div class="email-foot"><span id="email-span">24f2001293@ds.study.iitm.ac.in</span></div>
 
-  <!-- KaTeX (used by Reveal's math plugin) -->
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+  <!-- Reveal core JS + plugins (CDN) -->
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/markdown/markdown.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/highlight/highlight.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/math/math.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/notes/notes.js"></script>
+
+  <!-- Optional: D3 for charts (demo) -->
+  <script src="https://d3js.org/d3.v7.min.js"></script>
 
   <script>
-    // Initialize Reveal
+    // Initialize Reveal with useful plugins
     Reveal.initialize({
-      hash: true,
-      slideNumber: true,
-      plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.KaTeX ]
+      width: 1280,
+      height: 720,
+      margin: 0.04,
+      controls: true,
+      progress: true,
+      history: true,
+      transition: 'slide',
+      plugins: [ RevealMarkdown, RevealHighlight, RevealMath.KaTeX, RevealNotes ]
     });
+
+    // Simple example chart (renders when slide becomes current)
+    const revenue = [120, 150, 170, 190, 210, 230];
+    Reveal.addEventListener('slidechanged', (event) => {
+      if (event.currentSlide && event.currentSlide.id === 'chart-slide') {
+        renderChart();
+      }
+    });
+
+    function renderChart(){
+      if (document.getElementById('chart').innerHTML) return; // only draw once
+      const svg = d3.select('#chart').append('svg')
+        .attr('viewBox', '0 0 800 300')
+        .style('width', '100%');
+
+      const x = d3.scaleLinear().domain([0, revenue.length-1]).range([40,760]);
+      const y = d3.scaleLinear().domain([0, d3.max(revenue)]).range([260,20]);
+
+      const line = d3.line().x((d,i)=>x(i)).y(d=>y(d));
+      svg.append('path').attr('d', line(revenue)).attr('fill','none').attr('stroke','#333').attr('stroke-width',2);
+
+      svg.selectAll('circle').data(revenue).enter().append('circle')
+        .attr('cx', (d,i)=>x(i)).attr('cy', d=>y(d)).attr('r',4);
+    }
   </script>
 </body>
 </html>
